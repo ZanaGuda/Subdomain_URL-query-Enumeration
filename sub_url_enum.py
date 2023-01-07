@@ -8,7 +8,7 @@ print(banner)
 
 FILE = open('myfile.txt', 'w')
 
-chrs = 'ba'
+chrs = 'bew'
 n = 6
 for i in range(1, n):
     for j in itertools.product(chrs, repeat=i):
@@ -32,14 +32,15 @@ for file in subdomain_array:
 
 def main():
     subdomain_store = []
+    parameter = "q"
     for subdoms in subs:
         try:
             ip_value = dns.resolver.resolve(f'{subdoms}.{domain}', 'A')
             if ip_value:
                 subdomain_store.append(
-                    f'{subdoms}.{domain}')
-                if f"{subdoms}.{domain}" in subdomain_store:
-                    print(f'{subdoms}.{domain} valid')
+                    f'{subdoms}.{domain}?{parameter}={subdoms}')
+                if f"{subdoms}.{domain}?{parameter}={subdoms}" in subdomain_store:
+                    print(f'{subdoms}.{domain}?{parameter}={subdoms} valid')
                 else:
                     pass
         except dns.resolver.NXDOMAIN:
