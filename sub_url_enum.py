@@ -1,21 +1,29 @@
-import requests
 import sys
-import pyfiglet
+import dns.resolver
+import itertools
+domain = sys.argv[1]
+subdomain_array = ['www', 'mail', 'ftp', 'localhost', 'webmail', 'smtp',
+                   'pop', 'ns1', 'webdisk', 'cpanel', 'admin', 'news', 'img', 'ads', 'm', 'mx']
 
 
-banner = pyfiglet.figlet_format("SUDOMAIN AND URL QUERY ENUMERATION TOOL")
-print(banner)
+def main():
+    subdomain_store = []
+    for subdoms in subdomain_array:
+        try:
+            ip_value = dns.resolver.resolve(f'{subdoms}.{domain}', 'A')
+            if ip_value:
+                subdomain_store.append(f'{subdoms}.{domain}')
+                if f"{subdoms}.{domain}" in subdomain_store:
+                    print(f'{subdoms}.{domain} valid')
+                else:
+                    pass
+        except dns.resolver.NXDOMAIN:
+            pass
+        except dns.resolver.NoAnswer:
+            pass
+        except KeyboardInterrupt:
+            print('Subdomain not found!')
+            quit()
 
 
-subdomain_list = open("subdomain.txt").read()
-subs = subdomain_list.readlines()
-
-for sub in subs:
-    url = f"https://{sub}.{sys.argv[1]}"
-
-    try:
-        requests.get(url)
-    except Exception as ex:
-        pass
-else:
-    print("Valid: ", url)
+main()
