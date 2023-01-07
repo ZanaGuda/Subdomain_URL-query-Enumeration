@@ -1,0 +1,14 @@
+www
+mail
+ftp
+webmail
+smtp
+pop
+webdisk
+cpanel
+admin
+news
+img
+ads
+mail
+mx
