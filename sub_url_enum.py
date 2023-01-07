@@ -2,9 +2,15 @@ import sys
 import dns.resolver
 import itertools
 domain = sys.argv[1]
-subdomain_array = ['www', 'mail', 'ftp', 'localhost', 'webmail', 'smtp',
-                   'pop', 'ns1', 'webdisk', 'cpanel', 'admin', 'news', 'img', 'ads', 'm', 'mx']
+# subdomain_array = ['www', 'mail', 'ftp', 'localhost', 'webmail', 'smtp',
+#                    'pop', 'ns1', 'webdisk', 'cpanel', 'admin', 'news', 'img', 'ads', 'm', 'mx']
 
+subdomain_array = ["subdomain_array.txt", "subdomains.txt"]
+
+for file in subdomain_array:
+    with open(file) as inputfile:
+         content = inputfile.read()
+         subs = content.splitlines()
 
 def main():
     subdomain_store = []
