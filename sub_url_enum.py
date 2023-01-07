@@ -8,8 +8,7 @@ print(banner)
 
 FILE = open('myfile.txt', 'w')
 
-
-chrs = 'bew'
+chrs = 'ba'
 n = 6
 for i in range(1, n):
     for j in itertools.product(chrs, repeat=i):
@@ -20,7 +19,6 @@ for i in range(1, n):
 
 
 FILE.close()
-
 
 domain = sys.argv[1]
 
