@@ -1,9 +1,8 @@
 import sys
 import dns.resolver
 import itertools
+
 domain = sys.argv[1]
-# subdomain_array = ['www', 'mail', 'ftp', 'localhost', 'webmail', 'smtp',
-#                    'pop', 'ns1', 'webdisk', 'cpanel', 'admin', 'news', 'img', 'ads', 'm', 'mx']
 
 subdomain_array = ["subdomain_array.txt", "subdomains.txt"]
 
@@ -14,7 +13,7 @@ for file in subdomain_array:
 
 def main():
     subdomain_store = []
-    for subdoms in subdomain_array:
+    for subdoms in subs:
         try:
             ip_value = dns.resolver.resolve(f'{subdoms}.{domain}', 'A')
             if ip_value:
