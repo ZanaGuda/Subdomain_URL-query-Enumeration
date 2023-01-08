@@ -38,9 +38,9 @@ def main():
             ip_value = dns.resolver.resolve(f'{subdoms}.{domain}', 'A')
             if ip_value:
                 subdomain_store.append(
-                    f'{subdoms}.{domain}?{parameter}={subdoms}')
-                if f"{subdoms}.{domain}?{parameter}={subdoms}" in subdomain_store:
-                    print(f'{subdoms}.{domain}?{parameter}={subdoms} valid')
+                    f'{subdoms}.{domain}')
+                if f"{subdoms}.{domain}" in subdomain_store:
+                    print(f'{subdoms}.{domain} valid')
                 else:
                     pass
         except dns.resolver.NXDOMAIN:
